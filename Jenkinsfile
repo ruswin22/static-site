@@ -5,7 +5,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/<your-username>/<your-react-repo>.git'
+                git 'https://github.com/ruswin22/static-site.git'
             }
         }
 
@@ -30,7 +30,7 @@ pipeline {
                         rm -rf /tmp/build
                         cp -r build /tmp/build
 
-                        scp -o StrictHostKeyChecking=no -r /tmp/build/* ubuntu@<EC2-PUBLIC-IP>:/var/www/react-site/
+                        scp -o StrictHostKeyChecking=no -r /tmp/build/* ubuntu@3.110.124.86:/var/www/react-site/
 
                         ssh -o StrictHostKeyChecking=no ubuntu@<EC2-PUBLIC-IP> "sudo systemctl restart nginx"
                     """
